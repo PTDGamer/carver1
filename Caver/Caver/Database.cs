@@ -24,7 +24,7 @@ namespace Caver
         public bool CheckPhoneExists(string phone)
         {
             OpenConnection();
-            SqlCommand cmd = new SqlCommand($"SELECT COUNT(*) FROM Prospect WHERE Phone = '{phone}'", con);
+            SqlCommand cmd = new SqlCommand($"SELECT COUNT(*) FROM Prospect WHERE Phone = '{phone}'", connection);
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             CloseConnection();
             return count > 0;
@@ -33,7 +33,7 @@ namespace Caver
         public bool CheckEmailExists(string email)
         {
             OpenConnection();
-            SqlCommand cmd = new SqlCommand($"SELECT COUNT(*) FROM Prospect WHERE Email = '{email}'", con);
+            SqlCommand cmd = new SqlCommand($"SELECT COUNT(*) FROM Prospect WHERE Email = '{email}'", connection);
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             CloseConnection();
             return count > 0;
@@ -56,5 +56,28 @@ namespace Caver
                 }
             }
         }
+        public DataTable ViewProspects()
+        {
+            DataTable prospectsTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM Prospect";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    dataAdapter.Fill(prospectsTable);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error executing SELECT query: " + ex.Message);
+                }
+            }
+
+            return prospectsTable;
+        }
+
     }
 }

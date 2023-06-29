@@ -1,4 +1,5 @@
 using Caver;
+using System.Data;
 
 namespace Caver
 {
@@ -84,6 +85,31 @@ namespace Caver
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Create an instance of the Database class
+            Database database = new Database();
+
+            // Call the ViewProspects method to retrieve all prospects
+            DataTable prospectsTable = database.ViewProspects();
+
+            // Bind the DataTable to the DataGridView
+            dataGridView1.DataSource = prospectsTable;
+        }
+
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+            // Create an instance of the Database class
+            Database database = new Database();
+
+            // Call the ViewProspects method to retrieve all prospects
+            DataTable prospectsTable = database.ViewProspects();
+
+            // Bind the DataTable to the DataGridView
+            dataGridView1.DataSource = prospectsTable;
         }
     }
 }

@@ -55,6 +55,8 @@
             textBoxEmail = new TextBox();
             textBoxLastname = new TextBox();
             textBoxFirstname = new TextBox();
+            tabPage5 = new TabPage();
+            tabPage6 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabControl2.SuspendLayout();
@@ -67,12 +69,15 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage5);
+            tabControl1.Controls.Add(tabPage6);
             tabControl1.Location = new Point(2, 3);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1761, 1004);
             tabControl1.TabIndex = 0;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            tabControl1.Click += tabPage3_Click;
             // 
             // tabPage1
             // 
@@ -104,6 +109,7 @@
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(1741, 964);
             tabControl2.TabIndex = 0;
+            tabControl2.Click += tabPage3_Click;
             // 
             // tabPage3
             // 
@@ -115,6 +121,7 @@
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Prospects";
             tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Click += tabPage3_Click;
             // 
             // dataGridView1
             // 
@@ -124,6 +131,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(1651, 880);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // tabPage4
             // 
@@ -325,6 +333,26 @@
             textBoxFirstname.Size = new Size(100, 23);
             textBoxFirstname.TabIndex = 0;
             // 
+            // tabPage5
+            // 
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(1753, 976);
+            tabPage5.TabIndex = 2;
+            tabPage5.Text = "tabPage5";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(1753, 976);
+            tabPage6.TabIndex = 3;
+            tabPage6.Text = "tabPage6";
+            tabPage6.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -372,5 +400,7 @@
         private Label label5;
         private Label label4;
         private Label label3;
+        private TabPage tabPage5;
+        private TabPage tabPage6;
     }
 }
